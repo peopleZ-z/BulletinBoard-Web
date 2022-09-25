@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BulletinBoard.Api</name>
+    </assembly>
+    <members>
+        <member name="T:BulletinBoard.Api.Controllers.BulletinBoardController">
+            <summary>
+            Working with the bulletin board.
+            </summary>
+        </member>
+        <member name="M:BulletinBoard.Api.Controllers.BulletinBoardController.GetAllAsync">
+            <summary>
+            Returns a list of bulletin boards.
+            </summary>
+            <returns>ActionReasult Ok.</returns>
+        </member>
+    </members>
+</doc>
