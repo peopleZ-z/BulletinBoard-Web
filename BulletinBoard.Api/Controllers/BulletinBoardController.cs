@@ -1,4 +1,6 @@
+using BulletinBoard.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace BulletinBoard.Api.Controllers
 {
@@ -29,15 +31,20 @@ namespace BulletinBoard.Api.Controllers
         /// <summary>
         /// Returns a list of bulletin boards.
         /// </summary>
-        /// <returns>ActionReasult Ok.</returns>
+        /// <returns>A collection of elements <see cref="BulletinBoardDto"/>.</returns>
         [HttpGet]
+        [ProducesResponseType(typeof(IReadOnlyCollection<BulletinBoardDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetAllAsync()
         {
             return await Task.FromResult(Ok());
         }
 
-        // Get a specific one
+        /// <summary>
+        /// Returns a specific bulletin board.
+        /// </summary>
+        /// <returns>An element <see cref="BulletinBoardDto"/>.</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(BulletinBoardDto), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetAsync()
         {
             return await Task.FromResult(Ok());

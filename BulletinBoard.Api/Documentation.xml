@@ -13,7 +13,13 @@
             <summary>
             Returns a list of bulletin boards.
             </summary>
-            <returns>ActionReasult Ok.</returns>
+            <returns>A collection of elements <see cref="T:BulletinBoard.Contracts.BulletinBoardDto"/>.</returns>
+        </member>
+        <member name="M:BulletinBoard.Api.Controllers.BulletinBoardController.GetAsync">
+            <summary>
+            Returns a specific bulletin board.
+            </summary>
+            <returns>An element <see cref="T:BulletinBoard.Contracts.BulletinBoardDto"/>.</returns>
         </member>
     </members>
 </doc>

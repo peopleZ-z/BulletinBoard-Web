@@ -19,6 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BulletinBoard.Contracts\BulletinBoard.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Documentation.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
