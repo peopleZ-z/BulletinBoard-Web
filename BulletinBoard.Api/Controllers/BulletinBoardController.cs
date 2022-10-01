@@ -16,6 +16,9 @@ namespace BulletinBoard.Api.Controllers
         #endregion
 
         #region CTOR
+        /// <summary>
+        /// Initializes <see cref="BulletinBoardController"/>
+        /// </summary>
         public BulletinBoardController(ILogger<BulletinBoardController> logger)
         {
             _logger = logger;
