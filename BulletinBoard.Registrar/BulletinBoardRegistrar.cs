@@ -14,7 +14,6 @@ namespace BulletinBoard.Registrar
             sp.GetRequiredService<IDbContextOptionsConfigurator<BulletinBoardContext>>().Configure((DbContextOptionsBuilder<BulletinBoardContext>) dbOptions));
             services.AddSingleton<IDbContextOptionsConfigurator<BulletinBoardContext>, BulletinBoardContextConfiguration>();
             services.AddScoped(sp => (DbContext) sp.GetRequiredService<BulletinBoardContext>());
-            //services.AddScoped((Func<IServiceProvider, DbContext>)(sp => sp.GetRequiredService<BulletinBoardContext>()));
 
             return services;
         }

@@ -1,4 +1,9 @@
 ﻿using BulletinBoard.DataAccess.EntityConfigurations.Bulletin;
+using BulletinBoard.DataAccess.EntityConfigurations.Category;
+using BulletinBoard.DataAccess.EntityConfigurations.Comment;
+using BulletinBoard.DataAccess.EntityConfigurations.Photo;
+using BulletinBoard.DataAccess.EntityConfigurations.Role;
+using BulletinBoard.DataAccess.EntityConfigurations.User;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,7 +27,11 @@ namespace BulletinBoard.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new BulletinConfiguration());
-            //modelBuilder.ApplyConfiguration(new ());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            modelBuilder.ApplyConfiguration(new PhotoConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
     }
 }

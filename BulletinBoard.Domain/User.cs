@@ -12,12 +12,12 @@ namespace BulletinBoard.Domain
 
         public string Nickname { get; set; }
 
-        public Guid RoleId { get; set; }
+        public Guid? RoleId { get; set; }
 
-        public Role Role { get; set; }
+        public Role? Role { get; set; }
 
-        public ICollection<Bulletin> Bulletins { get; set; }
+        public ICollection<Bulletin>? Bulletins { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
     }
 }

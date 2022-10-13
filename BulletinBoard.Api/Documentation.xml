@@ -9,6 +9,11 @@
             Working with the bulletin board.
             </summary>
         </member>
+        <member name="M:BulletinBoard.Api.Controllers.BulletinBoardController.#ctor(Microsoft.Extensions.Logging.ILogger{BulletinBoard.Api.Controllers.BulletinBoardController})">
+            <summary>
+            Initializes <see cref="T:BulletinBoard.Api.Controllers.BulletinBoardController"/>
+            </summary>
+        </member>
         <member name="M:BulletinBoard.Api.Controllers.BulletinBoardController.GetAllAsync">
             <summary>
             Returns a list of bulletin boards.

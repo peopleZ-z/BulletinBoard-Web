@@ -14,7 +14,8 @@ namespace BulletinBoard.DataAccess.EntityConfigurations.Category
         {
             builder.ToTable("Categories");
 
-            builder.HasKey(category => category.Title);
+            builder.HasKey(category => category.Id);
+            builder.Property(category => category.Id).ValueGeneratedOnAdd();
 
             builder.Property(c => c.Title).HasMaxLength(100);
 

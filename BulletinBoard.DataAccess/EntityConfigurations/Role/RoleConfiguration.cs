@@ -14,7 +14,9 @@ namespace BulletinBoard.DataAccess.EntityConfigurations.Role
         {
             builder.ToTable("Roles");
 
-            builder.HasKey(role => role.Title);
+            builder.HasKey(role => role.Id);
+            builder.Property(role => role.Description).ValueGeneratedOnAdd();
+
             builder.Property(r => r.Title).HasMaxLength(100);
 
             builder.Property(r => r.Description).HasMaxLength(500);
