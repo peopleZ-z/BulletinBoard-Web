@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BulletinBoard.Migrations.Migrations
 {
     [DbContext(typeof(MigrationsDbContext))]
-    [Migration("20221010194850_Initial")]
+    [Migration("20221013152453_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,8 +60,6 @@ namespace BulletinBoard.Migrations.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OwnerId");
-
                     b.ToTable("Bulletins", (string)null);
                 });
 
@@ -73,11 +71,12 @@ namespace BulletinBoard.Migrations.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("BulletinBoard.Domain.Comment", b =>
@@ -91,7 +90,8 @@ namespace BulletinBoard.Migrations.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
 
                     b.Property<Guid>("OwnerId")
                         .HasColumnType("uuid");
@@ -102,7 +102,7 @@ namespace BulletinBoard.Migrations.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("BulletinBoard.Domain.Photo", b =>
@@ -116,17 +116,19 @@ namespace BulletinBoard.Migrations.Migrations
 
                     b.Property<string>("FileReference")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BulletinId");
 
-                    b.ToTable("Photo");
+                    b.ToTable("Photos", (string)null);
                 });
 
             modelBuilder.Entity("BulletinBoard.Domain.Role", b =>
@@ -137,15 +139,18 @@ namespace BulletinBoard.Migrations.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("BulletinBoard.Domain.User", b =>
@@ -156,16 +161,17 @@ namespace BulletinBoard.Migrations.Migrations
 
                     b.Property<string>("Nickname")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
-                    b.Property<Guid>("RoleId")
+                    b.Property<Guid?>("RoleId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("BulletinCategory", b =>
@@ -187,7 +193,7 @@ namespace BulletinBoard.Migrations.Migrations
                 {
                     b.HasOne("BulletinBoard.Domain.User", "Owner")
                         .WithMany("Bulletins")
-                        .HasForeignKey("OwnerId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -228,9 +234,7 @@ namespace BulletinBoard.Migrations.Migrations
                 {
                     b.HasOne("BulletinBoard.Domain.Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
                 });

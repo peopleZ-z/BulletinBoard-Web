@@ -8,10 +8,9 @@ namespace BulletinBoard.Migrations.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            var sql = 
-                $"INSERT INTO public.\"Category\" (\"Id\", \"Title\") VALUES('{Guid.NewGuid()}', '123')";
-            migrationBuilder.Sql(sql);
+            var sql = $"INSERT INTO public.\"Categories\" (\"Id\", \"Title\") VALUES('{Guid.NewGuid()}', '111')";
 
+            migrationBuilder.Sql(sql);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
